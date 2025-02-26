@@ -1,3 +1,6 @@
+// O(n^2) 
+// Gives TLE
+
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
