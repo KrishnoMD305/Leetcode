@@ -1,0 +1,31 @@
+To solve the problem of finding the longest happy prefix (a non-empty prefix that is also a suffix, excluding the entire string itself), we can use an efficient algorithm based on the **Knuth-Morris-Pratt (KMP) algorithm**. Here's the step-by-step explanation:
+
+---
+
+### Problem Breakdown
+1. A **prefix** of a string is any substring that starts from the beginning of the string.
+2. A **suffix** of a string is any substring that ends at the end of the string.
+3. A **happy prefix** is a prefix that is also a suffix but must exclude the entire string itself.
+
+For example:
+- For `s = "level"`, the longest happy prefix is `"l"` because it is both a prefix and a suffix.
+- For `s = "ababab"`, the longest happy prefix is `"abab"`.
+
+---
+
+### Approach Using KMP Algorithm
+The KMP algorithm preprocesses a string to compute a **Longest Prefix Suffix (LPS)** array. This array helps identify the longest prefix that is also a suffix for every substring of the input string. The LPS array is key to solving this problem efficiently.
+
+#### Steps to Solve:
+1. **Compute the LPS Array**:
+   - The LPS array stores the length of the longest proper prefix of the substring `s[0:i]` that is also a suffix.
+   - For example, for `s = "ababab"`, the LPS array would be `[0, 0, 1, 2, 3, 4]`.
+
+2. **Extract the Longest Happy Prefix**:
+   - The last value in the LPS array gives the length of the longest prefix that is also a suffix for the entire string.
+   - Use this length to extract the corresponding prefix from the string.
+
+3. **Edge Cases**:
+   - If the last value in the LPS array is `0`, it means there is no happy prefix, so return an empty string.
+
+---
